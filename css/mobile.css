@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* Styles for mobile devices narrower than iPad portrait (768px) */
+/*
+TO DO
+display the following on mobile devices, including tablets.
+Header bar - MyEconLab
+Footer bar - Pearson 
+
+*/
+.rssItem {
+	width:98% !important;
+	-webkit-transition: all 2s;
+	transition: all 2s;
+}
+#viewControls {
+	display:none;
+}
+
+
+/* Hide controls, as there is only 1 view */

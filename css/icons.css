@@ -1,0 +1,9 @@
+/* This CSS document is create by CSS Sprite Maker(A useful extention for Fireworks)
+ You can visit http://www.euchoice.com/cssspritemaker/ for more information.
+ by FaculaCoda*/
+
+.icon{background-image:url('icons.png');background-repeat:no-repeat}
+
+.btn_tile{width:25px;height:21px;background-position:0 0}
+.btn_grid{width:21px;height:21px;background-position:0 -21px}
+.btn_list{width:21px;height:20px;background-position:0 -42px}

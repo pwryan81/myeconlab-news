@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<meta name="description" content="Live economic news from Australian and international news sources for Pearson MyEconLab">
+<meta name="author" content="Pearson Australia">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" media="only screen and (max-width: 767px)" href="css/mobile.css" />
+<link rel="stylesheet" href="js/lib/colorbox/colorbox.css" />
+<link rel="icon" type="image/png"  href="img/favicon_blue64.png">
+<!-- iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="apple-touch-icon" href="img/favicon_blue64.png"/>
+<link rel="apple-touch-startup-image" href="img/splash-ipad-landscape.png">
+<title>Economic News - MyEconLab - Pearson Australia</title>
+</head>
+<body>
+<h1>Economic News</h1>
+<div id="container"> 
+  
+  <!--<a href='#'  class="button" onclick='slider.prev();return false;'>prev</a> -->
+  <ul id="viewControls" class="buttonGroup">
+    <li id="btnTileView" class="icon icon-tile"><img src="img/icon-tile.png" width="16" height="11" alt="Tile view"></li>
+    <li id="btnGridView" class="icon icon-grid"><img src="img/icon-grid.png" width="16" height="11" alt="Grid view"></li>
+    <li id="btnListView" class="icon icon-list"><img src="img/icon-list.png" width="16" height="11" alt="List view"></li>
+    <!--<li id="btnImageView" class="icon icon-img">Image view</li>-->
+  </ul>
+  <ul id="tabs">
+    <li id="tab1" data-panel="tabPanel1" class="selected">Australia</li>
+    <li id="tab2" data-panel="tabPanel2">World</li>
+    <li id="tab2" data-panel="tabPanel3">Video</li>
+  </ul>
+  
+  <div id='slider' class='swipe'>
+    <ul>
+      <li class="tabPanel" id="tabPanel1" style='display:block'>
+        <!--<ul class="buttonGroup filterButtonGroup">
+          <li class="selected" data-filter="*">Show all</li>
+          <li data-filter=".smh-com-au">smh.com.au Business</li>
+          <li data-filter=".tresury-gov-au">Australian Treasury</li>
+        </ul>-->
+        <!--<ul class="buttonGroup filterButtonGroup">
+          <li class="" data-filter="*">Show all</li>
+          <li data-filter=".smh-com-au" class="selected">smh.com.au Business</li>
+          <li data-filter=".tresury-gov-au" class="">Australian Treasury</li>
+        undefined<li data-filter=".smh-com-au">smh.com.au Business</li><li data-filter=".businessspectator-com-au">Business Spectator: Economy</li><li data-filter=".businessspectator-com-au">Business Spectator: Financial Markets</li><li data-filter=".abc-net-au">ABC News</li><li data-filter=".news-com-au">News.com.au</li><li data-filter=".afr-com">Australian Financial Review</li><li data-filter=".afr-com">Australian Financial Review</li><li data-filter=".afr-com">Australian Financial Review</li><li data-filter=".">Ross Gittens</li><li data-filter=".tresury-gov-au">Australian Treasury</li><li data-filter=".abs-gov-au">Australian Bureau of Statistics headlines</li><li data-filter=".tradingeconomics-com">Trading Economics</li><li data-filter=".alankohler-com-au">Alan Kohler</li></ul>
+        -->
+        <div class="separator"></div>
+        <div id="feedContainer1"  class="feedContainer"> 
+          <!-- Caution. Everything in feedContainer will be overwritten every time the RSS feed loads. So put nav buttons outside of it. -->
+          <h3>Loading news feeds..</h3>
+          <img src="img/loading.gif" width="64" height="64"></div>
+      </li>
+      <li class="tabPanel"   id="tabPanel2" style='display:none'>
+        <ul class="buttonGroup filterButtonGroup">
+          <li class="selected" data-filter="*">Show all</li>
+          <li data-filter=".reuters-com">Reuters</li>
+          <li data-filter=".economist-com">The Economist</li>
+        </ul>
+        <div id="feedContainer2" class="feedContainer"></div>
+      </li>
+      <li class="tabPanel" id="tabPanel3" style='display:none'>
+        <ul class="buttonGroup filterButtonGroup">
+          <li class="selected" data-filter="*">Show all</li>
+          <li data-filter=".video-ft-com">video.FT.com</li>
+        </ul>
+        <div id="feedContainer3" class="feedContainer"></div>
+      </li>
+    </ul>
+  </div>
+  <!-- End mySwipe/Swipe --> 
+</div>
+<!-- End page container --> 
+
+<!--
+  <input name="searchText" type="text" id="searchText" value="china" />
+  <input type="submit" name="search" id="search" value="Search" />
+--> 
+<!-- Load 3rd party libraries and plugins --> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+<script type="text/javascript" src="js/lib/jquery.zrssfeed-1.1.6x.js"></script> 
+<script type="text/javascript" src="js/lib/jquery.isotope.min.js"></script> 
+<script type="text/javascript" src='js/lib/swipe.js'></script> 
+<script type="text/javascript" src="js/lib/colorbox/jquery.colorbox.js"></script> 
+<script type="text/javascript" src="js/lib/modernizr.custom.44819.js"></script> 
+<!-- Load data file and main script --> 
+<script type="text/javascript" src="data/data.js"></script> 
+<script type="text/javascript" src="js/scripts.js"></script> 
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36831232-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
