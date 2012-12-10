@@ -23,9 +23,10 @@
   
   <!--<a href='#'  class="button" onclick='slider.prev();return false;'>prev</a> -->
   <ul id="viewControls" class="buttonGroup">
-    <li id="btnTileView" class="icon icon-tile"><img src="img/icon-tile.png" width="16" height="11" alt="Tile view"></li>
-    <li id="btnGridView" class="icon icon-grid"><img src="img/icon-grid.png" width="16" height="11" alt="Grid view"></li>
-    <li id="btnListView" class="icon icon-list"><img src="img/icon-list.png" width="16" height="11" alt="List view"></li>
+    <li id="btnTileView" class="icon"><img src="img/icon-tile.png" width="16" height="11" alt="Tile view"></li>
+    <li id="btnGridView" class="icon"><img src="img/icon-grid.png" width="16" height="11" alt="Grid view"></li>
+    <li id="btnListView" class="icon"><img src="img/icon-list.png" width="16" height="11" alt="List view"></li>
+    
     <!--<li id="btnImageView" class="icon icon-img">Image view</li>-->
   </ul>
   <ul id="tabs">
@@ -33,15 +34,16 @@
     <li id="tab2" data-panel="tabPanel2">World</li>
     <li id="tab2" data-panel="tabPanel3">Video</li>
   </ul>
-  
   <div id='slider' class='swipe'>
     <ul>
       <li class="tabPanel" id="tabPanel1" style='display:block'>
-        <!--<ul class="buttonGroup filterButtonGroup">
+        <ul id="nav" class="buttonGroup filterButtonGroup">
           <li class="selected" data-filter="*">Show all</li>
-          <li data-filter=".smh-com-au">smh.com.au Business</li>
+          <li data-filter=".smh-com-au">SMH.com.au Business</li>
           <li data-filter=".tresury-gov-au">Australian Treasury</li>
-        </ul>-->
+          <li data-filter=".businessspectator-com-au">Business Spectator</li>
+        </ul>
+        
         <!--<ul class="buttonGroup filterButtonGroup">
           <li class="" data-filter="*">Show all</li>
           <li data-filter=".smh-com-au" class="selected">smh.com.au Business</li>
@@ -85,10 +87,11 @@
 <script type="text/javascript" src="js/lib/jquery.isotope.min.js"></script> 
 <script type="text/javascript" src='js/lib/swipe.js'></script> 
 <script type="text/javascript" src="js/lib/colorbox/jquery.colorbox.js"></script> 
-<script type="text/javascript" src="js/lib/modernizr.custom.44819.js"></script> 
+<script type="text/javascript" src="js/lib/modernizr-latest.js"></script> 
 <!-- Load data file and main script --> 
 <script type="text/javascript" src="data/data.js"></script> 
 <script type="text/javascript" src="js/scripts.js"></script> 
+<script type="text/javascript" src="js/lib/tinynav.js"></script> 
 <script type="text/javascript">
 
   var _gaq = _gaq || [];

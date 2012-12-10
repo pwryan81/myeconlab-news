@@ -334,7 +334,7 @@ li.rssItem img:after {
 	border: 1px solid #CCC;
 }
 /* Swipe panel*/
-.swipe ul li {
+.swipe .tabPanel {
 	border-right: 1px solid #CECEE8;
 	border-left: 1px solid rgba(255, 255, 255, 0.6);
 }
@@ -347,3 +347,11 @@ li.rssItem img:after {
 .smh-com-au a img, .news-com-au a img, .reuters-com a img {
 	display:none;
 }
+
+
+
+   /* styles for desktop */
+    .tinynav { display: none }
+    #nav .selected a { color: red }
+    /* styles for mobile */
+ 

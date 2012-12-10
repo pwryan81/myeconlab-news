@@ -12,9 +12,14 @@ Footer bar - Pearson
 	-webkit-transition: all 2s;
 	transition: all 2s;
 }
+/* Hide controls, as there is only 1 view */
 #viewControls {
 	display:none;
 }
 
-
-/* Hide controls, as there is only 1 view */
+ .tinynav { display: block;
+ width: 90%;
+padding: 1em;
+margin: 1em;
+ }
+  #nav { display: none }
