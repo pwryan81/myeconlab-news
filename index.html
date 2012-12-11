@@ -7,7 +7,7 @@
 <meta name="description" content="Live economic news from Australian and international news sources for Pearson MyEconLab">
 <meta name="author" content="Pearson Australia">
 <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" media="only screen and (max-width: 767px)" href="css/mobile.css" />
+<link rel="stylesheet" media="only screen and (max-width: 768px)" href="css/mobile.css" />
 <link rel="stylesheet" href="js/lib/colorbox/colorbox.css" />
 <link rel="icon" type="image/png"  href="img/favicon_blue64.png">
 <!-- iOS -->
@@ -18,7 +18,11 @@
 <title>Economic News - MyEconLab - Pearson Australia</title>
 </head>
 <body>
+<header>
+<img src="img/MyEconLab.png" width="163" height="29" alt="MyEconLab" class="floatRight">
 <h1>Economic News</h1>
+</header>
+
 <div id="container"> 
   
   <!--<a href='#'  class="button" onclick='slider.prev();return false;'>prev</a> -->
@@ -32,17 +36,19 @@
   <ul id="tabs">
     <li id="tab1" data-panel="tabPanel1" class="selected">Australia</li>
     <li id="tab2" data-panel="tabPanel2">World</li>
-    <li id="tab2" data-panel="tabPanel3">Video</li>
+    <li id="tab3" data-panel="tabPanel3">Video</li>
+    <li id="tab4" data-panel="tabPanel4">Search</li>
   </ul>
   <div id='slider' class='swipe'>
     <ul>
       <li class="tabPanel" id="tabPanel1" style='display:block'>
-        <ul id="nav" class="buttonGroup filterButtonGroup">
+        <ul class="buttonGroup filterButtonGroup">
           <li class="selected" data-filter="*">Show all</li>
-          <li data-filter=".smh-com-au">SMH.com.au Business</li>
+          <!--  <li data-filter=".smh-com-au">SMH.com.au Business</li>
           <li data-filter=".tresury-gov-au">Australian Treasury</li>
-          <li data-filter=".businessspectator-com-au">Business Spectator</li>
+          <li data-filter=".businessspectator-com-au">Business Spectator</li>-->
         </ul>
+       
         
         <!--<ul class="buttonGroup filterButtonGroup">
           <li class="" data-filter="*">Show all</li>
@@ -71,16 +77,27 @@
         </ul>
         <div id="feedContainer3" class="feedContainer"></div>
       </li>
+      <li class="tabPanel" id="tabPanel4" style='display:none'>
+      <div class="searchForm">
+        <input name="searchText" type="search" id="searchText" value="Australia" placeholder="Search" />
+        <div id="searchBtn">Search</div>
+        </div>
+        <div id="feedContainer4" class="feedContainer"></div>
+      </li>
     </ul>
   </div>
   <!-- End mySwipe/Swipe --> 
 </div>
-<!-- End page container --> 
+<!-- End page container -->
+
 
 <!--
-  <input name="searchText" type="text" id="searchText" value="china" />
-  <input type="submit" name="search" id="search" value="Search" />
---> 
+Footer is tricky, because the body is updated dynamically, and if absolute position, it doees not update to new body height. Normal position works dynamically, but floats in the middle of empty screen cuts 
+<footer>
+  <div class="floatLeft">Always Learning</div>
+  <div class="floatRight">Pearson</div>
+</footer>-->
+
 <!-- Load 3rd party libraries and plugins --> 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
 <script type="text/javascript" src="js/lib/jquery.zrssfeed-1.1.6x.js"></script> 

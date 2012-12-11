@@ -47,13 +47,14 @@ $(document).ready(function () {
     var $feedContainer1 = $('#feedContainer1');
     var $feedContainer2 = $('#feedContainer2');
     var $feedContainer3 = $('#feedContainer3');
+	var $feedContainer4 = $('#feedContainer4');
 	
 	/* COULD PUT THE FOLLOWING 3 RSSFEED() METHODS IN A LOOP. */
 	
     /**  RSS Feeds for container1*/
     $feedContainer1.rssfeed(australianRssFeeds, {
         snippet: false,
-        limit: 1,
+        limit: 3,
         sort: 'date',
         dateformat: 'timeline',
         sortasc: false,
@@ -65,12 +66,32 @@ $(document).ready(function () {
         });
 		
 		// Build filter buttons dynamically		
-		var filterButtonsHTML;
+		var filterButtonsHTML = "";
 		for (var i=0; i<australianRssFeeds.length; i++) {
 			filterButtonsHTML += '<li data-filter=".' + australianRssFeeds[i].classname + '">' + australianRssFeeds[i].displayname + '</li>';
 		}		
 		$('#tabPanel1 .filterButtonGroup').append(filterButtonsHTML); // TO DO: It adds the buttons, but don't seem to respond to their event listners
 		
+		 // TinyNav.js 1
+      $('.filterButtonGroup').tinyNav({
+        active: 'selected'
+      });
+	  
+	  
+	  /* Just placing this here temporarily because dynamically appended elements are not listening to their event handlers */
+	   /* FILTER ITEMS EVENT HANDLER */                                   //TO DO:   Need the event listners to listen to dynamically generated elements too.
+   // $('.filterButtonGroup li').click(function () {
+	   $('.filterButtonGroup li').on("click", function () {
+        var selector = $(this).attr('data-filter');
+		console.log("Filtering on: " + selector);
+		// Change selected button state		
+		//$(this).parent().find('.selected').removeClass('selected');
+		//$(this).addClass('selected');
+		$(this).parent().siblings('.feedContainer').isotope({
+            filter: selector
+        });
+    });
+	  
 		
 		if (!Modernizr.touch) {initColorbox();}
 		
@@ -93,7 +114,7 @@ $(document).ready(function () {
     });	*/
 	
 	/**  RSS Feeds for container3 */
- /*   $feedContainer3.rssfeed(videoRssFeeds, {
+   $feedContainer3.rssfeed(videoRssFeeds, {
         snippet: false,
         limit: 3,
         sort: 'date',
@@ -105,7 +126,10 @@ $(document).ready(function () {
             layoutMode: 'masonry'
         });
 		if (!Modernizr.touch) {initColorbox();}
-    });*/
+    });
+	
+	
+	
 	
 	
 	/* TAB GROUP EVENT HANDLER*/
@@ -125,15 +149,14 @@ $(document).ready(function () {
         var selector = $(this).attr('data-filter');
 		console.log("Filtering on: " + selector);
 		// Change selected button state		
-		$(this).parent().find('.selected').removeClass('selected');
-		$(this).addClass('selected');
+		//$(this).parent().find('.selected').removeClass('selected');
+		//$(this).addClass('selected');
 		$(this).parent().siblings('.feedContainer').isotope({
             filter: selector
         });
     });
 	
-	
-	
+
 	
 	
     // VIEW CONTROLS EVENT HANDLER
@@ -146,9 +169,53 @@ $(document).ready(function () {
     $('#btnListView').click(function () {
         $('.feedContainer').removeClass('tileview').removeClass('gridview').addClass('listview').isotope('reLayout');
     });	
-	 $('#btnImageView').click(function () {
+/*	 $('#btnImageView').click(function () {
         $('.feedContainer').removeClass('tileview').removeClass('gridview').addClass('imageView').isotope('reLayout');
+    });*/
+	$('#searchBtn').click(function () {
+		console.log("searchBtn clicked");
+       searchFeeds();
     });
+	
+	
+	 $('#searchText').keypress(function(e) {
+		 console.log("Key Pressed");
+        if(e.which == 13) {
+			console.log("Enter Pressed");
+            $(this).blur();
+            $('#searchBtn').focus().click();
+			searchFeeds();
+        }
+    });	
+	
+	
+	
+	
+	function searchFeeds()
+	{
+		//$feedContainer4.isotope('destroy'); // Wipe all existing items before refreshing with new
+		var searchTerm = $('#searchText').val();
+		console.log("Searching for " + searchTerm);
+		/* Testing Seach with Yahoo Pipes */
+		 $feedContainer4.rssfeed(searchRssFeeds, {
+			snippet: false,
+			limit: 20,
+			sort: 'date',
+			dateformat: 'timeline',
+			sortasc: false,			
+			searchterm: searchTerm //NEW
+		}, function () {	
+			$feedContainer4.isotope({
+					itemSelector: '.rssItem',
+					layoutMode: 'masonry'
+				});		
+			if (!Modernizr.touch) {initColorbox();}
+		})
+		
+		
+		
+	}
+	
 	
 	/** Lightbox */
 	function initColorbox()
@@ -165,10 +232,7 @@ $(document).ready(function () {
 	}
 	
 	
-	 // TinyNav.js 1
-      $('#nav').tinyNav({
-        active: 'selected'
-      });
+	
 	
 
 	

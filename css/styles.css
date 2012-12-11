@@ -11,7 +11,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	display: block;
 }
 body {
-	font-family: Tahoma, Genevam, sans-serif;
+	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px; /* Base font size */
 }
 ol, ul {
@@ -32,7 +32,38 @@ table {
 * UI Styles
 */
 /* Make it look like the XL lab*/
-
+header, footer {
+}
+footer {
+}
+.floatLeft {
+	float:left;
+}
+.floatRight {
+	float:right;
+}
+input[type="search"] {
+	padding: .5em;
+	width: 20em;
+}
+.searchForm {
+	margin:3em;
+}
+#searchBtn {
+	display: inline;
+	background-color: #CCC;
+	padding: 0.75em;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+	position: relative;
+	left: -5px;
+	border: 1px solid #AAA;
+	background: -webkit-linear-gradient(top, #ffffff 1%, #dfdeeb 100%); /* Chrome10+,Safari5.1+ */
+}
+#searchBtn:hover {
+	cursor:pointer;
+	background: -webkit-linear-gradient(top, #ffffff 1%, #ead4b0 100%); /* Chrome10+,Safari5.1+ */
+}
 #container {
 	background-color:#CFDEF3; /* Original light blue */
 	background-color:#ECECF6; /* Mauve to match MyEconLab left nav */
@@ -63,25 +94,24 @@ h2 {
 	background-color:#FFF;
 	margin:0 auto;
 }
-#tabs li {
+#tabs > li {
 	display:inline-block;
 	background-color:#658EC2;
-	text-decoration:none;
-	padding:10px 20px;
+	text-align:center;
+	padding:1em 0;
 	border-top-right-radius:7px;
 	border-top-left-radius:7px;
 	font-weight:bold;
 	color:#FFF;
-	width:32%;
+	width:24%;
 	max-width:140px;
 	box-sizing:border-box;
-	text-align:center;
 	border: 1px solid #CCC;
 	border-bottom: none;
 	position: relative;
 	top: 1px;
-	z-index: 2;	
-	-webkit-transition: background-color 0.2s ;	
+	z-index: 2;
+	-webkit-transition: background-color 0.2s;
 }
 #tabs li:hover {
 	background-color:#ECECF6;
@@ -106,7 +136,7 @@ h2 {
 	text-align:center;
 }
 /* Individual button styles */
-.buttonGroup li {
+.buttonGroup li, .button {
 	display: block;
 	float:left;
 	color: #264767;
@@ -171,7 +201,6 @@ h2 {
 	height:20px;
 	background-position:0 -42px
 }
-
 /*
 * RSS Feed Styles
 */
@@ -212,7 +241,7 @@ h2 {
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 }
-.rssItem h4:hover  {
+.rssItem h4:hover {
 	background-color:#436BA3;
 }
 .rssItem a h4 {
@@ -284,16 +313,14 @@ li.rssItem img:after {
 }
 .imageView .rssItem {
 	/*visibility:hidden;*/
-	color:#fff;	
+	color:#fff;
 }
 .imageView .rssItem img {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	top: 40px;	
+	top: 40px;
 }
-
-
 /**** Isotope CSS3 transitions ****/
 .isotope, .isotope .isotope-item {
 	-webkit-transition-duration: 0.8s;
@@ -347,11 +374,12 @@ li.rssItem img:after {
 .smh-com-au a img, .news-com-au a img, .reuters-com a img {
 	display:none;
 }
-
-
-
-   /* styles for desktop */
-    .tinynav { display: none }
-    #nav .selected a { color: red }
-    /* styles for mobile */
- 
+.tinynav {
+	display: block;
+	width: 45%;
+	padding: .8em;
+	margin: 1em;
+}
+.filterButtonGroup {
+	display: none
+}

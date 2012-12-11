@@ -23,12 +23,10 @@
  *
  **/
 (function ($) {
-	var feedIndex;
-	var	myJsonObject;  //globally accessible variable
+	//var	myJsonObject;  //globally accessible variable
 	
     $.fn.rssfeed = function (JSONfeedsource, options, fn) {
-		feedIndex = -1;
-		
+				
         // Set plugin defaults
         var defaults = {
             limit: 10,
@@ -45,7 +43,8 @@
             ssl: false,
             /*linktarget: '_self',*/
             sort: '',
-            sortasc: true
+            sortasc: true,
+			searchterm: ''  // PR added
         };
         var options = $.extend(defaults, options);
         // Functions
@@ -58,7 +57,7 @@
             if (!$e.hasClass('rssFeed')) $e.addClass('rssFeed');
             // Check for valid url
             if (JSONfeedsource == null || JSONfeedsource.length == 0) return false;			
-			myJsonObject = JSONfeedsource; // Store JSONfeedsource into global variable
+			//myJsonObject = JSONfeedsource; // Store JSONfeedsource into global variable
             //Storage for multiple feeds. Holds an array of objects, each containing the processed HTML and timestamp for sorting
             var itemArray = [];
             var feedsToHandle = JSONfeedsource.length;
@@ -66,6 +65,16 @@
 			// Send request
             for (var i=0; i<JSONfeedsource.length; i++ ) {
 				var url = JSONfeedsource[i].feedurl;
+				console.log("searchterm: " + options.searchterm);
+				if (options.searchTerm != ''){ 
+					console.log("Adding " + options.searchterm + " to the URL")	
+					url += options.searchterm; 
+					console.log("url:" + url);
+				}
+				else {
+					console.log("No SearchTerm provided")					
+				};
+				 //If a searchTerm is given, append it to the end of the URL. e.g. http://pipes.yahoo.com/pipes/pipe.run?_id=27d003c8b270e059766d0b1fc5060e82&_render=rss&search=Australia
 				var classname = JSONfeedsource[i].classname;
                 // Create Google Feed API address
                 var api = "http" + s + "://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent(url);
@@ -183,8 +192,7 @@
 			filterClass = filterClass.match(/:\/\/(www\.)?(.[^/:]+)/)[2].replace(/\./g,'-');
 			
 			itemArray[currentItem]['html'] = '<li class="rssItem ' + filterClass + '">';
-			//feedIndex++;
-			
+				
             // Add feed row            
 			itemArray[currentItem]['html'] += '<a href="' + entry.link + '" class="iframe" title="' + entry.title + ' - ' + feeds.title + '"><' + options.titletag + '>' + entry.title + '</' + options.titletag + '></a>';
 			
@@ -208,13 +216,15 @@
             if (options.media && xmlEntries.length > 0) {
                 var xmlMedia = xmlEntries[i].getElementsByTagName('enclosure');
                 if (xmlMedia.length > 0) {
-                    itemArray[currentItem]['html'] += '<div class="rssMedia"><div>Media files</div><ul>'
+                  /*  itemArray[currentItem]['html'] += '<div class="rssMedia"><div>Media files</div><ul>'
                     for (var m = 0; m < xmlMedia.length; m++) {
                         var xmlUrl = xmlMedia[m].getAttribute("url");
                         var xmlType = xmlMedia[m].getAttribute("type");
                         var xmlSize = xmlMedia[m].getAttribute("length");
                         itemArray[currentItem]['html'] += '<li><a href="' + xmlUrl + '" title="Download this media">' + xmlUrl.split('/').pop() + '</a> (' + xmlType + ', ' + formatFilesize(xmlSize) + ')</li>';
-                    }
+                    }*/
+					itemArray[currentItem]['html'] += '<img src="' + xmlMedia[0].getAttribute("url") + '">';
+					
                 }
             }
 			 // Close Item LI

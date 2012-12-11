@@ -7,6 +7,24 @@ Header bar - MyEconLab
 Footer bar - Pearson 
 
 */
+
+header {
+	display:none;
+}
+
+
+#tabs li {
+	display: block;
+	float: left;
+	border:none;
+	border-radius:0;
+	max-width:none;
+	width:25%;
+	padding:1.3em 0;
+}
+#slider {
+	clear: both;
+}
 .rssItem {
 	width:98% !important;
 	-webkit-transition: all 2s;
@@ -16,10 +34,12 @@ Footer bar - Pearson
 #viewControls {
 	display:none;
 }
-
- .tinynav { display: block;
- width: 90%;
-padding: 1em;
-margin: 1em;
- }
-  #nav { display: none }
+.tinynav {
+	display: block;
+	width: 90%;
+	padding: 1em;
+	margin: 1em;
+}
+.filterButtonGroup {
+	display: none
+}
