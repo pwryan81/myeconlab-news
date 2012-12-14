@@ -6,6 +6,7 @@
  */
 /** Global variables */
 var numberOfPanelsLoaded = 0;
+var viewNumber = 1; // used to keep track of and cycle through the 3 views
 var SWIPE_DURATION;
 /** Detect touch device */
 if (Modernizr.touch) {
@@ -232,10 +233,93 @@ $(document).ready(function () {
             //initColorbox();
         }
 		
+		// KEYBOARD SHORTCUTS
+	    // http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
+		$(document).keydown(function (e) {
+			console.log("keydown()");	
+			
+			 var keyCode = e.keyCode || e.which,
+		  key = {left: 37, up: 38, right: 39, down: 40, space: 32, tab: 9, enter:13, esc: 27,   tilda:192, num0:48, num1:49, num2:50, num3:51, num4:52, num5:53, num6:54, num7:55, num8:56, num9:57, g:71,  l:76, t:84, v:86 };
+		console.log(keyCode);
+			  switch (keyCode) {
+				case key.left: 			
+				  	mySwipe.prev();
+					break;
+				case (key.right) :	
+				  	mySwipe.next();
+					break;	
+				case (key.tilda):
+					filterProgramatically(0);	//first button			
+					break;			
+				case (key.num1):
+					filterProgramatically(1);	//first button			
+					break;
+				case (key.num2):
+					filterProgramatically(2);					
+					break;
+				case (key.num3):
+					filterProgramatically(3);					
+					break;
+				case (key.num4):
+					filterProgramatically(4);					
+					break;
+				case (key.num5):
+					filterProgramatically(5);					
+					break;
+				case (key.num6):
+					filterProgramatically(6);					
+					break;
+				case (key.num7):
+					filterProgramatically(7);					
+					break;
+				case (key.num8):
+					filterProgramatically(8);					
+					break;
+				case (key.num9):
+					filterProgramatically(9);					
+					break;	
+				case (key.g): // grid view
+					$('#btnGridView').trigger('click');					
+					break;		
+				case (key.l): //list view
+					$('#btnListView').trigger('click');				
+					break;		
+				case (key.t): //tile view
+					 $('#btnTileView').trigger('click');				
+					break;	
+				case (key.v): // cycle through views
+					 viewCycle();			
+					break;				
+			  }
+		  });
+		  
+		  // Filter the feeds in the current panel based on the numerical key pressed
+		  function filterProgramatically(filterBtnNo) {
+			  var pos = mySwipe.getPos() + 1; // pos starts from 0
+			  $('#panel' + pos + ' .filterButtonGroup li').eq(filterBtnNo).trigger('click');					  
+		  }
+		  
+		  // Cycle through the available views
+		  function viewCycle(){
+			  viewNumber++;
+			  switch (viewNumber) {
+				  case 1:
+			   		$('#btnTileView').trigger('click');
+					break;
+			   	case 2:
+					$('#btnGridView').trigger('click');	
+					break;
+			   case 3:
+			   		$('#btnListView').trigger('click');
+					viewNumber = 0; //reset
+					break;	
+			  }
+		  }
 		
-		// Not sure this is needed, but relayout the last feed cos the images were getting cliped cos they loaded late.
-		// setTimeout($($panel3).children('.feedContainer').isotope('reLayout'),2000);
-    }
+
+		
+    } // End doThisAfterAllFeedsLoaded() 
+	
     /** Lightbox */
     function initColorbox() {
         $(".iframe").colorbox({
