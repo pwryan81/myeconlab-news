@@ -32,12 +32,8 @@
 </head>
 <body>
 <header>
-<h1>Economic News</h1>
+  <h1>Economic News</h1>
 </header>
-
-
-
-
 <div id="container">
   <ul id="viewControls" class="buttonGroup">
     <li id="btnTileView" class="selected"><img src="img/icon-tile.png" width="16" height="11" alt="Tile view"></li>
@@ -46,9 +42,9 @@
     <!--<li id="btnImageView" class="icon icon-img">Image view</li>-->
   </ul>
   <ul id="tabs">
-    <li data-panel="panel1" class="selected">Australia</li>
-    <li data-panel="panel2">World</li>
-    <li data-panel="panel3">Video</li>
+    <li data-panel="panel1" class="on">Australia</li>
+    <li data-panel="panel2" class="off">World</li>
+    <li data-panel="panel3" class="off">Video</li>
     <!--<li id="tab4" data-panel="panel4">Search</li>-->
   </ul>
   <div id='slider' class='swipe'>
@@ -60,10 +56,10 @@
         <div class="feedContainer"> 
           <!-- Caution. Everything in feedContainer will be overwritten every time the RSS feed loads. So put nav buttons outside of it. -->
           <div class="disclaimer">
-<h2>Economic News disclaimer</h2>
-<p>The articles listed are provided as a news service, sourced directly from third-parties using the RSS standard.  The service is provided "as is" for use at your own risk.  The third-party sources are not affiliated with Pearson Australia Group and no responsibility is taken for any material containing abuse, advice, links, media or opinion.  Pearson Australia Group makes no claim of ownership, warranty of merchantability, or accuracy of the articles presented. If you have any enquiries in regards to this news feature, please contact <a href="mailto:customer.service@pearson.com.au">Pearson Australia Group</a>.</p>
-<div class="button" id="btnAccept">Accept</div>
-</div>
+            <h2>Economic News disclaimer</h2>
+            <p>The articles listed are provided as a news service, sourced directly from third-parties using the RSS standard.  The service is provided "as is" for use at your own risk.  The third-party sources are not affiliated with Pearson Australia Group and no responsibility is taken for any material containing abuse, advice, links, media or opinion.  Pearson Australia Group makes no claim of ownership, warranty of merchantability, or accuracy of the articles presented. If you have any enquiries in regards to this news feature, please contact <a href="mailto:customer.service@pearson.com.au">Pearson Australia Group</a>.</p>
+            <div class="button" id="btnAccept">Accept</div>
+          </div>
           <div class="loading" style="display:none;"> <img src="img/loading.gif" width="64" height="64" alt="Loading">
             <p>Loading news feeds..</p>
           </div>

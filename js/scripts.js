@@ -22,21 +22,29 @@ if (Modernizr.touch) {
 /** Use CSS3 transforms for tab slider if browser supports it */
 if (Modernizr.csstransforms) {
 	// Initialise Swipe.js plugin
-    window.mySwipe = new Swipe(
-    document.getElementById('slider'), {
-        callback: function (e, pos) {
-			// After slide, update the selected tab
-            $('#tabs li').removeClass('selected');
-            $('#tabs li').eq(pos).addClass('selected');
-        }
-    });
-	// On tab click, update the selected tab, and move the slider
-	  $('#tabs li').click(function (event) {       
-        var slideNumber = $(this).index();
-        if (mySwipe) {
-            mySwipe.slide(slideNumber, SWIPE_DURATION); //TO DO: Check if mySwipe object exists first. Not in IE8.
-        }
-    });
+    window.mySwipe = new Swipe(document.getElementById('slider'), {
+      callback: function(event,index,elem) {
+        setTab(selectors[index]);
+      }
+    }),
+    selectors = document.getElementById('tabs').children;
+
+	for (var i = 0; i < selectors.length; i++) {
+	  var elem = selectors[i];
+	  elem.setAttribute('data-tab', i);
+	  elem.onclick = function(e) {
+		e.preventDefault();
+		setTab(this);
+		mySwipe.slide(parseInt(this.getAttribute('data-tab'),10),SWIPE_DURATION);
+	  }
+	}
+	
+	function setTab(elem) {
+	  for (var i = 0; i < selectors.length; i++) {
+		selectors[i].className = selectors[i].className.replace('on','off');
+	  }
+	  elem.className += ' on';
+	}
 	
 } else {
     // IE8: Handler for older browsers without CSS3 transitions. No slider, so simply show/hide panels
@@ -67,7 +75,7 @@ $(document).ready(function () {
 			loadFeeds();						
 	});
 	
-   //loadFeeds();
+	
     //loadFeeds();
    function loadFeeds() {
 	   // Load RSS feeds for panel1
@@ -185,11 +193,16 @@ $(document).ready(function () {
 		});*/
 		 
 		 
+		
+		 
+		 
 		 // Updated 'selected state on any buttons in a button group 
        $('.buttonGroup li').click(function () {
 		    $(this).siblings('.selected').removeClass('selected');
 			$(this).addClass('selected');		
 		});
+		
+		
 		
 		
         // Add event listeners to the filter buttons which are dynamically appended 

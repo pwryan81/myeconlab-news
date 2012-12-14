@@ -33,7 +33,8 @@ header {
 	clear: both;
 }
 .rssItem {
-	width:98% !important;
+	width:96% !important;
+	height:auto;
 	-webkit-transition: all 2s;
 	transition: all 2s;
 }
@@ -55,5 +56,9 @@ header {
 }
 
 .disclaimer {
-	width: 90%;
+	/* Fullscreen on mobile */
+	width: 100%;
+	margin:0;
+	padding:10% 20%;
+	height:100%;
 }

@@ -13,6 +13,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px; /* Base font size */
+	height:100%; /* PR. This may break things, but want to set 100% height on things */
 }
 h2 {
 	padding-bottom:2em;
@@ -81,13 +82,11 @@ h2 {
 }
 #tabs > li {	
 	display:inline-block;
-	background-color:#658EC2;
 	text-align:center;
 	padding:1em 0;
 	border-top-right-radius:7px;
 	border-top-left-radius:7px;
 	font-weight:bold;
-	color:#FFF;
 	width:32%;
 	max-width:140px;
 	box-sizing:border-box;
@@ -104,10 +103,16 @@ h2 {
 	cursor:pointer;
 	-webkit-transition: none;
 }
-#tabs li.selected {
+#tabs li.off {	
+	background-color:#658EC2;
+	color:#FFF;
+}
+
+#tabs li.on {
 	background-color:#ECECF6;
 	color: #205F9F;
 }
+
 #viewControls {
 	float: right;
 }
@@ -212,9 +217,9 @@ h2 {
 	padding:0;
 }
 .rssItem {
-	width:290px;
+	width:310px; /* Optimum width for 3 columns on iPad landscape  */
 	border:1px solid #C6C6C6;
-	margin:5px;
+	margin:10px;
 	overflow:hidden;
 	background-color: #FFF;
 	position:relative; /* So that we can position elements within it, such as pubdate */
@@ -222,6 +227,8 @@ h2 {
 	border-radius: 3px;
 	padding-bottom:2em;  /* Without padding, some feeds are not in paragraph, so there is overlap of the pubdate */
 	max-height:400px; /* cos some feeds are really long, or don't work with snippets. Better to clip the text than the display. */
+	-webkit-transition: all 1s;
+	transition: all 1s;
 }
 .rssItem h4 {
 	background-color:#4977B3;
@@ -267,31 +274,20 @@ h2 {
 	height: auto;
 	min-height:96px; /* This is to reserve some vertical space so that late loading images are not cliped if they load after isotope does its layout*/
 }
-
-
-/**** Isotope Filtering ****/
-
-.isotope-item {
-	z-index: 2;
-}
-.isotope-hidden.isotope-item {
-	pointer-events: none;
-	z-index: 1;
-}
 /* Toggle views */
 .tileview .rssItem {
 	transition: all 2s;
-	width: 32%;
+	width: 310px;
+	height:auto;
 }
 .gridview .rssItem {
-	height: 200px;
-	width: 32%;
+	height: 260px;
+	width: 310px;
 	transition: all 2s;
 }
 .listview .rssItem {
-	width:98%;
-	-webkit-transition: all 2s;
-	transition: all 2s;
+	width:96%;
+	height:auto;	
 	padding-bottom: 10px;
 }
 .imageView .rssItem {
@@ -303,37 +299,7 @@ h2 {
 	position: absolute;
 	top: 40px;
 }
-/**** Isotope CSS3 transitions ****/
-.isotope, .isotope .isotope-item {
-	-webkit-transition-duration: 0.8s;
-	-moz-transition-duration: 0.8s;
-	-ms-transition-duration: 0.8s;
-	-o-transition-duration: 0.8s;
-	transition-duration: 0.8s;
-}
-.isotope {
-	-webkit-transition-property: height, width;
-	-moz-transition-property: height, width;
-	-ms-transition-property: height, width;
-	-o-transition-property: height, width;
-	transition-property: height, width;
-	-webkit-transition-property: all;
-}
-.isotope .isotope-item {
-	-webkit-transition-property: -webkit-transform, opacity;
-	-moz-transition-property:    -moz-transform, opacity;
-	-ms-transition-property:     -ms-transform, opacity;
-	-o-transition-property:      -o-transform, opacity;
-	transition-property:         transform, opacity;
-}
-/**** disabling Isotope CSS3 transitions ****/
-.isotope.no-transition, .isotope.no-transition .isotope-item, .isotope .isotope-item.no-transition {
-	-webkit-transition-duration: 0s;
-	-moz-transition-duration: 0s;
-	-ms-transition-duration: 0s;
-	-o-transition-duration: 0s;
-	transition-duration: 0s;
-}
+
 /* SWIPEJS */
 .swipe {
 	padding-bottom:20px;
@@ -354,7 +320,7 @@ h2 {
 	display:none;
 	height:0;
 }
-.reuters-com a img {
+.reuters-com img {
 	display:none;
 }
 .tinynav {
@@ -391,6 +357,45 @@ h2 {
 	text-align:center;
 }
 
+/**** Isotope CSS3 transitions ****/
+.isotope, .isotope .isotope-item {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-ms-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+}
+.isotope {
+	-webkit-transition-property: height, width;
+	-moz-transition-property: height, width;
+	-ms-transition-property: height, width;
+	-o-transition-property: height, width;
+	transition-property: height, width;
+	-webkit-transition-property: all;
+}
+.isotope .isotope-item {
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property:    -moz-transform, opacity;
+	-ms-transition-property:     -ms-transform, opacity;
+	-o-transition-property:      -o-transform, opacity;
+	transition-property:         transform, opacity;
+}
+/**** disabling Isotope CSS3 transitions ****/
+.isotope.no-transition, .isotope.no-transition .isotope-item, .isotope .isotope-item.no-transition {
+	-webkit-transition-duration: 0s;
+	-moz-transition-duration: 0s;
+	-ms-transition-duration: 0s;
+	-o-transition-duration: 0s;
+	transition-duration: 0s;
+}
+/**** Isotope Filtering ****/
+.isotope-item {
+	z-index: 2;
+}
+.isotope-hidden.isotope-item {
+	pointer-events: none;
+	z-index: 1;
+}
 /*
 .searchForm {
 	margin:3em;
@@ -411,3 +416,6 @@ h2 {
 	background: -webkit-linear-gradient(top, #ffffff 1%, #ead4b0 100%); 
 }
 */
+
+
+
