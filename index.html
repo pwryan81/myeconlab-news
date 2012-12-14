@@ -9,94 +9,89 @@
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" media="only screen and (max-width: 768px)" href="css/mobile.css" />
 <link rel="stylesheet" href="js/lib/colorbox/colorbox.css" />
-<link rel="icon" type="image/png"  href="img/favicon_blue64.png">
+<link rel="shortcut icon" type="image/png"  href="img/favicon_blue64.png">
+<!-- 57x57 -->
 <!-- iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<link rel="apple-touch-icon" href="img/favicon_blue64.png"/>
+<link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+<!-- 57x57 -->
+<link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone4.png" />
 <link rel="apple-touch-startup-image" href="img/splash-ipad-landscape.png">
+<link rel="apple-touch-startup-image" sizes="320x460" href="img/splash-screen-320x460.png">
+<!--  On iPhone and iPod touch, the image must be 320 x 460 pixels and in portrait orientation.-->
+<link rel="apple-touch-startup-image" sizes="640x920" href="img/splash-screen-640x960.png">
+<!-- iPhone (Retina) SPLASHSCREEN-->
+<link rel="apple-touch-startup-image" sizes="768x1004" href="apple-touch-startup-image-768x1004.png">
+<!-- iPad (portrait) SPLASHSCREEN-->
+<link rel="apple-touch-startup-image" sizes="748x1024" href="apple-touch-startup-image-748x1024.png">
+<!-- iPad (landscape) SPLASHSCREEN-->
+<!-- /iOS -->
 <title>Economic News - MyEconLab - Pearson Australia</title>
 </head>
 <body>
 <header>
-<img src="img/MyEconLab.png" width="163" height="29" alt="MyEconLab" class="floatRight">
 <h1>Economic News</h1>
 </header>
 
-<div id="container"> 
-  
-  <!--<a href='#'  class="button" onclick='slider.prev();return false;'>prev</a> -->
+
+
+
+<div id="container">
   <ul id="viewControls" class="buttonGroup">
-    <li id="btnTileView" class="icon"><img src="img/icon-tile.png" width="16" height="11" alt="Tile view"></li>
-    <li id="btnGridView" class="icon"><img src="img/icon-grid.png" width="16" height="11" alt="Grid view"></li>
-    <li id="btnListView" class="icon"><img src="img/icon-list.png" width="16" height="11" alt="List view"></li>
-    
+    <li id="btnTileView" class="selected"><img src="img/icon-tile.png" width="16" height="11" alt="Tile view"></li>
+    <li id="btnGridView" class=""><img src="img/icon-grid.png" width="16" height="11" alt="Grid view"></li>
+    <li id="btnListView" class=""><img src="img/icon-list.png" width="16" height="11" alt="List view"></li>
     <!--<li id="btnImageView" class="icon icon-img">Image view</li>-->
   </ul>
   <ul id="tabs">
-    <li id="tab1" data-panel="tabPanel1" class="selected">Australia</li>
-    <li id="tab2" data-panel="tabPanel2">World</li>
-    <li id="tab3" data-panel="tabPanel3">Video</li>
-    <li id="tab4" data-panel="tabPanel4">Search</li>
+    <li data-panel="panel1" class="selected">Australia</li>
+    <li data-panel="panel2">World</li>
+    <li data-panel="panel3">Video</li>
+    <!--<li id="tab4" data-panel="panel4">Search</li>-->
   </ul>
   <div id='slider' class='swipe'>
     <ul>
-      <li class="tabPanel" id="tabPanel1" style='display:block'>
+      <li class="panel" id="panel1" style='display:block'>
         <ul class="buttonGroup filterButtonGroup">
           <li class="selected" data-filter="*">Show all</li>
-          <!--  <li data-filter=".smh-com-au">SMH.com.au Business</li>
-          <li data-filter=".tresury-gov-au">Australian Treasury</li>
-          <li data-filter=".businessspectator-com-au">Business Spectator</li>-->
         </ul>
-       
-        
-        <!--<ul class="buttonGroup filterButtonGroup">
-          <li class="" data-filter="*">Show all</li>
-          <li data-filter=".smh-com-au" class="selected">smh.com.au Business</li>
-          <li data-filter=".tresury-gov-au" class="">Australian Treasury</li>
-        undefined<li data-filter=".smh-com-au">smh.com.au Business</li><li data-filter=".businessspectator-com-au">Business Spectator: Economy</li><li data-filter=".businessspectator-com-au">Business Spectator: Financial Markets</li><li data-filter=".abc-net-au">ABC News</li><li data-filter=".news-com-au">News.com.au</li><li data-filter=".afr-com">Australian Financial Review</li><li data-filter=".afr-com">Australian Financial Review</li><li data-filter=".afr-com">Australian Financial Review</li><li data-filter=".">Ross Gittens</li><li data-filter=".tresury-gov-au">Australian Treasury</li><li data-filter=".abs-gov-au">Australian Bureau of Statistics headlines</li><li data-filter=".tradingeconomics-com">Trading Economics</li><li data-filter=".alankohler-com-au">Alan Kohler</li></ul>
-        -->
-        <div class="separator"></div>
-        <div id="feedContainer1"  class="feedContainer"> 
+        <div class="feedContainer"> 
           <!-- Caution. Everything in feedContainer will be overwritten every time the RSS feed loads. So put nav buttons outside of it. -->
-          <h3>Loading news feeds..</h3>
-          <img src="img/loading.gif" width="64" height="64"></div>
-      </li>
-      <li class="tabPanel"   id="tabPanel2" style='display:none'>
-        <ul class="buttonGroup filterButtonGroup">
-          <li class="selected" data-filter="*">Show all</li>
-          <li data-filter=".reuters-com">Reuters</li>
-          <li data-filter=".economist-com">The Economist</li>
-        </ul>
-        <div id="feedContainer2" class="feedContainer"></div>
-      </li>
-      <li class="tabPanel" id="tabPanel3" style='display:none'>
-        <ul class="buttonGroup filterButtonGroup">
-          <li class="selected" data-filter="*">Show all</li>
-          <li data-filter=".video-ft-com">video.FT.com</li>
-        </ul>
-        <div id="feedContainer3" class="feedContainer"></div>
-      </li>
-      <li class="tabPanel" id="tabPanel4" style='display:none'>
-      <div class="searchForm">
-        <input name="searchText" type="search" id="searchText" value="Australia" placeholder="Search" />
-        <div id="searchBtn">Search</div>
+          <div class="disclaimer">
+<h2>Economic News disclaimer</h2>
+<p>The articles listed are provided as a news service, sourced directly from third-parties using the RSS standard.  The service is provided "as is" for use at your own risk.  The third-party sources are not affiliated with Pearson Australia Group and no responsibility is taken for any material containing abuse, advice, links, media or opinion.  Pearson Australia Group makes no claim of ownership, warranty of merchantability, or accuracy of the articles presented. If you have any enquiries in regards to this news feature, please contact <a href="mailto:customer.service@pearson.com.au">Pearson Australia Group</a>.</p>
+<div class="button" id="btnAccept">Accept</div>
+</div>
+          <div class="loading" style="display:none;"> <img src="img/loading.gif" width="64" height="64" alt="Loading">
+            <p>Loading news feeds..</p>
+          </div>
         </div>
-        <div id="feedContainer4" class="feedContainer"></div>
       </li>
+      <li class="panel" id="panel2" style='display:none'>
+        <ul class="buttonGroup filterButtonGroup">
+          <li class="selected" data-filter="*">Show all</li>
+        </ul>
+        <div class="feedContainer"></div>
+      </li>
+      <li class="panel" id="panel3" style='display:none'>
+        <ul class="buttonGroup filterButtonGroup">
+          <li class="selected" data-filter="*">Show all</li>
+        </ul>
+        <div  class="feedContainer"></div>
+      </li>
+      <!--<li class="panel" id="panel4" style='display:none'>
+        <input name="searchText" type="search" id="searchText" value="Search term" placeholder="Search" />
+        <input type="submit" name="search" id="searchBtn" value="Search" />     
+        <div class="feedContainer">        
+        </div>
+      </li>-->
     </ul>
   </div>
   <!-- End mySwipe/Swipe --> 
 </div>
-<!-- End page container -->
-
-
-<!--
-Footer is tricky, because the body is updated dynamically, and if absolute position, it doees not update to new body height. Normal position works dynamically, but floats in the middle of empty screen cuts 
-<footer>
-  <div class="floatLeft">Always Learning</div>
-  <div class="floatRight">Pearson</div>
-</footer>-->
+<!-- End page container --> 
 
 <!-- Load 3rd party libraries and plugins --> 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
@@ -106,21 +101,8 @@ Footer is tricky, because the body is updated dynamically, and if absolute posit
 <script type="text/javascript" src="js/lib/colorbox/jquery.colorbox.js"></script> 
 <script type="text/javascript" src="js/lib/modernizr-latest.js"></script> 
 <!-- Load data file and main script --> 
-<script type="text/javascript" src="data/data.js"></script> 
+<script type="text/javascript" src="data/econ-feeds.js"></script> 
 <script type="text/javascript" src="js/scripts.js"></script> 
-<script type="text/javascript" src="js/lib/tinynav.js"></script> 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36831232-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<script type="text/javascript" src="js/lib/tinynav.js"></script>
 </body>
 </html>

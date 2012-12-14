@@ -57,7 +57,7 @@
 		  
 		  var filter = $(this).val()
 		  //alert(filter);
-		  $('.feedContainer').isotope({
+		  $(this).siblings('.feedContainer').isotope({
             	filter: filter
         	});
         });

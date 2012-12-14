@@ -28,22 +28,22 @@
     $.fn.rssfeed = function (JSONfeedsource, options, fn) {
 				
         // Set plugin defaults
-        var defaults = {
-            limit: 10,
+        var defaults = {			
+            limit: 5,
             header: true,
             titletag: 'h4',
             date: true,
-            dateformat: 'datetime',
+            dateformat: 'timeline',
             content: true,
-            snippet: true,
-            media: true,
+            snippet: false,
+            media: false,
             showerror: true,
             errormsg: '',
             key: null,
             ssl: false,
             /*linktarget: '_self',*/
-            sort: '',
-            sortasc: true,
+            sort: 'date',
+            sortasc: false,
 			searchterm: ''  // PR added
         };
         var options = $.extend(defaults, options);
@@ -65,9 +65,9 @@
 			// Send request
             for (var i=0; i<JSONfeedsource.length; i++ ) {
 				var url = JSONfeedsource[i].feedurl;
-				console.log("searchterm: " + options.searchterm);
+				//console.log("searchterm: " + options.searchterm);
 				if (options.searchTerm != ''){ 
-					console.log("Adding " + options.searchterm + " to the URL")	
+					//console.log("Adding " + options.searchterm + " to the URL")	
 					url += options.searchterm; 
 					console.log("url:" + url);
 				}
@@ -200,7 +200,7 @@
 			itemArray[currentItem]['html'] += '<div  class="feedTitle">' + feeds.title + '</div>';
 			
             // Add pubDate
-            if (options.date && pubDate) itemArray[currentItem]['html'] += '<div  class="pubDate">' + pubDate + ' <img src="img/ext2.png" ></div>'
+            if (options.date && pubDate) itemArray[currentItem]['html'] += '<div  class="pubDate">' + pubDate + ' </div>'
             // feeds.title
             //if (feeds.title) itemArray[currentItem]['html'] += '<div  class="feedTitle">'+ feeds.title +'</div>'
             if (options.content) {

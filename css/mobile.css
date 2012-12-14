@@ -12,15 +12,22 @@ header {
 	display:none;
 }
 
+#tabs {
+	background-color:#658EC2;
+	
+}
 
 #tabs li {
 	display: block;
 	float: left;
 	border:none;
+	border-right:1px solid #4E7DB8;
+	border-left:1px solid #7097C7;
 	border-radius:0;
 	max-width:none;
-	width:25%;
+	width:33.3%;
 	padding:1.3em 0;
+
 }
 #slider {
 	clear: both;
@@ -31,8 +38,8 @@ header {
 	transition: all 2s;
 }
 /* Hide controls, as there is only 1 view */
-#viewControls {
-	display:none;
+.buttonGroup {
+	display:none !important; /* Important otherwise jquery effect will override */
 }
 .tinynav {
 	display: block;
@@ -40,6 +47,13 @@ header {
 	padding: 1em;
 	margin: 1em;
 }
-.filterButtonGroup {
-	display: none
+
+
+.button, .buttonGroup li {
+	min-height:44px; /* min size for touch targets */
+	min-width:44px; /* min size for touch targets */
+}
+
+.disclaimer {
+	width: 90%;
 }
